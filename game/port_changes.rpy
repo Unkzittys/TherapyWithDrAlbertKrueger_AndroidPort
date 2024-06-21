@@ -8,7 +8,7 @@ init python:
         if not os.path.isdir(config.gamedir):
             os.mkdir(config.gamedir)
 
-        config.variants = ['pc', 'large', 'touch', None]
+        config.variants = ['android', 'medium', 'touch', None]
 
         gesture_dict = {'s' : 'hide_windows'}
         config.gestures.update(gesture_dict)
