@@ -10,14 +10,15 @@ init python:
 
         config.variants = ['pc', 'large', 'touch', None]
 
-        gesture_dict = {'n' : 'game_menu', 's' : 'hide_windows'}
+        gesture_dict = {'s' : 'hide_windows'}
         config.gestures.update(gesture_dict)
+
+        config.gl2 = False
+        config.autosave_on_quit = True
+        config.save_on_mobile_background = True
 
 
         build.classify("**.vscode", None)
-
-        try: renpy.file(config.basedir + "/info.txt")
-        except: open(config.basedir + "/info.txt", "wb").write("Game: {}\nVersion: {}".format(config.name, config.version))
 
 python early:
     if renpy.android:
