@@ -21,6 +21,5 @@
 
 Currently, there are two types of gestures programmed to perform predefined actions. They are:
 
-- **Up Gesture**: Opens the game menu, if possible.
 - **Down Gesture**: Hide the dialogue window.
 - **Up-Down-Left-Right-Left-Right Gesture**: The default gesture included in Ren'Py games. It displays information on the total number of dialogues in the upper left corner of the screen, in addition to those already read and those read after the last save.
