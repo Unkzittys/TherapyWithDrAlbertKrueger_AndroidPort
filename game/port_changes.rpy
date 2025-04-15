@@ -17,8 +17,19 @@ init python:
         config.autosave_on_quit = True
         config.save_on_mobile_background = True
 
+        renpy.game.preferences.gl_powersave = False
+
 
         build.classify("**.vscode", None)
+
+init -999 python:
+    version_tuple = list(renpy.version_tuple)
+    version_list = version_tuple[:3]
+    renpy_version_main = str(version_list[0])+"."+str(version_list[1])+"."+str(version_list[2])
+    if ("renpy-"+renpy_version_main+"-sdk" in config.basedir):
+        config.developer = True
+    else:
+        config.developer = False
 
 python early:
     if renpy.android:
