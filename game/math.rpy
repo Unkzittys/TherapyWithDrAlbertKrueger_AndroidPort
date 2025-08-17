@@ -522,7 +522,8 @@ label bloody_card_convo:
     show bloody_card as card_3:
         xpos 765 ypos 250
         easein_bounce 0.5 ypos -400
-    show math_answer_3:
+    show expression Text(str(math_answers[2]), font="GenericMobileSystem.ttf", size=40,
+        xanchor=0.5, yanchor=0.5) as math_answer_3:
         xpos 765 ypos 250
         easein_bounce 0.5 ypos -400
 
@@ -534,7 +535,8 @@ label bloody_card_convo:
         pause 0.2
         easein_bounce 0.5 ypos 250
 
-    show math_answer_3:
+    show expression Text(str(math_answers[2]), font="GenericMobileSystem.ttf", size=40,
+        xanchor=0.5, yanchor=0.5) as math_answer_3:
         xpos 765 ypos -400
         pause 0.2
         easein_bounce 0.5 ypos 250
