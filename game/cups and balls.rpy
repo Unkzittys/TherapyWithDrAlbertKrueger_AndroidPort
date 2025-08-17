@@ -375,12 +375,14 @@ label cups_and_balls_start:
     $ has_ball_index = 1
     $ current_cups_and_balls_round = 0
 
+transform cup_move(to_x, dur):
+    ease dur xpos to_x
+
 label shift_cup:
 
     show screen empty_screen
 
     python:
-
         cup_index_1 = random.randint(0,2)
         cup_index_2 = random.randint(0,2)
         while cup_index_2 == cup_index_1:
@@ -399,33 +401,26 @@ label shift_cup:
         elif cup_index_real[cup_index_2] == has_ball_index:
             has_ball_index = cup_index_real[cup_index_1]
 
-    $ renpy.pause(cup_speed, hard='True')
+        # debug
+        print("SHIFT TURN %d -> real pos %r / idx map %r / ball %d" %
+                  (cup_shift_turn, cup_positions_real, cup_index_real, has_ball_index))
 
     $ renpy.music.set_volume(1.0, delay=0, channel='sound')
     play sound "audio/audioblocks-arcade-fast-metallic-boost.mp3"
 
-    show cup as cup_1:
-        ease cup_speed xpos cup_positions_real[0]
+    show cup as cup_1 at cup_move(cup_positions_real[0], cup_speed)
+    show cup as cup_2 at cup_move(cup_positions_real[1], cup_speed)
+    show cup as cup_3 at cup_move(cup_positions_real[2], cup_speed)
 
-    show cup as cup_2:
-        ease cup_speed xpos cup_positions_real[1]
-
-    show cup as cup_3:
-        ease cup_speed xpos cup_positions_real[2]
-
-
-
+    $ renpy.pause(cup_speed)
 
     if cup_shift_turn != 3:
-
         $ cup_shift_turn += 1
         jump shift_cup
 
-    $ renpy.pause(0.5, hard='True')
-
+    $ renpy.pause(0.5)
     show screen empty_screen
     show screen cups_and_balls_problem
-
     n2 "Select the correct cup:"
 
 label end_of_cups_and_balls_question:
