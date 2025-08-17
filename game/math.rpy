@@ -74,25 +74,44 @@ label splashscreen:
 
 init:
 
-    $ config.keymap['self_voicing'].remove('v')
-    $ config.keymap['self_voicing'].remove('V')
-    $ config.keymap['hide_windows'].remove('h')
-    $ config.keymap['hide_windows'].remove('mouseup_2')
-    $ config.keymap['skip'].remove('K_LCTRL')
-    $ config.keymap['skip'].remove('K_RCTRL')
-    $ config.keymap['toggle_skip'].remove('K_TAB')
-    $ config.keymap['fast_skip'].remove('>')
-    $ config.keymap['clipboard_voicing'].remove('C')
-    $ config.keymap['rollforward'].remove('mousedown_5')
-    $ config.keymap['rollforward'].remove('K_PAGEDOWN')
-    $ config.keymap['rollforward'].remove('repeat_K_PAGEDOWN')
-    $ config.keymap['rollback'].remove('K_PAGEUP')
-    $ config.keymap['rollback'].remove('repeat_K_PAGEUP')
-    $ config.keymap['rollback'].remove('K_AC_BACK')
-    $ config.keymap['rollback'].remove('mousedown_4')
-    $ config.keymap['game_menu'].remove('K_ESCAPE')
-    $ config.keymap['game_menu'].remove('K_MENU')
-    $ config.keymap['game_menu'].remove('mouseup_3')
+    if 'v' in config.keymap['self_voicing']:
+        $ config.keymap['self_voicing'].remove('v')
+    if 'V' in config.keymap['self_voicing']:
+        $ config.keymap['self_voicing'].remove('V')
+    if 'h' in config.keymap['hide_windows']:
+        $ config.keymap['hide_windows'].remove('h')
+    if 'mouseup_2' in config.keymap['hide_windows']:
+        $ config.keymap['hide_windows'].remove('mouseup_2')
+    if 'K_LCTRL' in config.keymap['skip']:
+        $ config.keymap['skip'].remove('K_LCTRL')
+    if 'K_RCTRL' in config.keymap['skip']:
+        $ config.keymap['skip'].remove('K_RCTRL')
+    if 'K_TAB' in config.keymap['toggle_skip']:
+        $ config.keymap['toggle_skip'].remove('K_TAB')
+    if '>' in config.keymap['fast_skip']:
+        $ config.keymap['fast_skip'].remove('>')
+    if 'C' in config.keymap['clipboard_voicing']:
+        $ config.keymap['clipboard_voicing'].remove('C')
+    if 'mousedown_5' in config.keymap['rollforward']:
+        $ config.keymap['rollforward'].remove('mousedown_5')
+    if 'K_PAGEDOWN' in config.keymap['rollforward']:
+        $ config.keymap['rollforward'].remove('K_PAGEDOWN')
+    if 'repeat_K_PAGEDOWN' in config.keymap['rollforward']:
+        $ config.keymap['rollforward'].remove('repeat_K_PAGEDOWN')
+    if 'K_PAGEUP' in config.keymap['rollback']:
+        $ config.keymap['rollback'].remove('K_PAGEUP')
+    if 'repeat_K_PAGEUP' in config.keymap['rollback']:
+        $ config.keymap['rollback'].remove('repeat_K_PAGEUP')
+    if 'K_AC_BACK' in config.keymap['rollback']:
+        $ config.keymap['rollback'].remove('K_AC_BACK')
+    if 'mousedown_4' in config.keymap['rollback']:
+        $ config.keymap['rollback'].remove('mousedown_4')
+    if 'K_ESCAPE' in config.keymap['game_menu']:
+        $ config.keymap['game_menu'].remove('K_ESCAPE')
+    if 'K_MENU' in config.keymap['game_menu']:
+        $ config.keymap['game_menu'].remove('K_MENU')
+    if 'mouseup_3' in config.keymap['game_menu']:
+        $ config.keymap['game_menu'].remove('mouseup_3')
     $ config.keymap['self_voicing'] = []
     $ config.keymap['clipboard_voicing'] = []
     $ config.keymap['toggle_skip'] = []
