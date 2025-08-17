@@ -3,3 +3,5 @@ game/cache/
 .vscode/
 game/saves/
 *.rpyb
+log.txt
+common.rpymc
