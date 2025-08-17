@@ -5,3 +5,4 @@ game/saves/
 *.rpyb
 log.txt
 common.rpymc
+*.keystore
