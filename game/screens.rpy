@@ -257,13 +257,17 @@ screen quick_menu():
             textbutton _("LOG") action ShowMenu('history')
             if not persistent.try_skipping:
                 textbutton _("SKIP") action Show('skip_confirm')
+            
+            textbutton _("Save") action ShowMenu('save')
+
+            textbutton _("Load") action ShowMenu('load')
 
             if auto_enabled_:
                 textbutton _("AUTO") action Preference("auto-forward", "toggle")
             else:
                 textbutton _("AUTO") action NullAction()
-            if quick_load_:
-                textbutton _("LOAD") action FileLoad(1, page=1) selected False
+            # if quick_load_:
+            #     textbutton _("LOAD") action FileLoad(1, page=1) selected False
 
 
 
