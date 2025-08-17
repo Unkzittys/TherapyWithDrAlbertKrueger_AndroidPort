@@ -378,16 +378,11 @@ label start:
 label repeat_math:
 
     python:
-
-        for x in range(0,4):
-            math_answers[x] = 0
-
         while True:
-            num_1 = random.randint(1,9)
-            num_2 = random.randint(1,9)
-            math_symbol_index = random.randint(0,3)
-            math_symbol = math_symbols[math_symbol_index]
-            
+            num_1 = random.randint(1, 9)
+            num_2 = random.randint(1, 9)
+            math_symbol = random.choice(math_symbols)
+
             if math_symbol == '+':
                 correct_answer = num_1 + num_2
                 break
@@ -400,52 +395,35 @@ label repeat_math:
                 if correct_answer < 20:
                     break
             elif math_symbol == '/':
-                correct_answer = num_1 / num_2
                 if num_1 % num_2 == 0:
+                    correct_answer = num_1 // num_2
                     break
 
-        correct_answer_num = random.randint(1,4)
+        correct_answer_num = random.randint(1, 4)
+        correct_pos = correct_answer_num - 1
 
-        math_answers[correct_answer_num - 1] = correct_answer
+        if math_symbol == '*':
+            max_val = 18
+        elif math_symbol == '+':
+            max_val = 18
+        elif math_symbol == '-':
+            max_val = 18
+        elif math_symbol == '/':
+            max_val = 9
+        else:
+            max_val = 18
 
-        for x in range(0,4):
-            if x != (correct_answer_num - 1):
-                math_answers[x] = random.randint(1,9)
-                y = 0
-                while y != 4:
-                    if y != x:
-                        if math_answers[x] != math_answers[y]:
-                            y += 1
-                        else:
-                            math_answers[x] = random.randint(1,9)
-                            y = 0
-                    else:
-                        y += 1
-
-
-    image math_answer_1:
-        xanchor 0.5 yanchor 0.5 xalign 0.5 yalign 0.5
-        contains:
-            Text(str(math_answers[0]), font="GenericMobileSystem.ttf", size=40)
-            xanchor 0.5 yanchor 0.5 xalign 0.5 yalign 0.5 zoom 5.0
-
-    image math_answer_2:
-        xanchor 0.5 yanchor 0.5 xalign 0.5 yalign 0.5
-        contains:
-            Text(str(math_answers[1]), font="GenericMobileSystem.ttf", size=40)
-            xanchor 0.5 yanchor 0.5 xalign 0.5 yalign 0.5 zoom 5.0
-
-    image math_answer_3:
-        xanchor 0.5 yanchor 0.5 xalign 0.5 yalign 0.5
-        contains:
-            Text(str(math_answers[2]), font="GenericMobileSystem.ttf", size=40)
-            xanchor 0.5 yanchor 0.5 xalign 0.5 yalign 0.5 zoom 5.0
-
-    image math_answer_4:
-        xanchor 0.5 yanchor 0.5 xalign 0.5 yalign 0.5
-        contains:
-            Text(str(math_answers[3]), font="GenericMobileSystem.ttf", size=40)
-            xanchor 0.5 yanchor 0.5 xalign 0.5 yalign 0.5 zoom 5.0
+        used = { correct_answer }
+        for i in range(4):
+            if i == correct_pos:
+                math_answers[i] = correct_answer
+            else:
+                while True:
+                    cand = random.randint(0, max_val)
+                    if cand not in used:
+                        used.add(cand)
+                        math_answers[i] = cand
+                        break
 
     $ renpy.music.set_volume(1.0, delay=0, channel='sound')
     play sound "audio/arcade-game-over-2.mp3"
@@ -453,8 +431,8 @@ label repeat_math:
     show card as card_1:
         xpos 285 ypos -400
         easein_bounce 0.5 ypos 250
-
-    show math_answer_1:
+    show expression Text(str(math_answers[0]), font="GenericMobileSystem.ttf", size=40,
+        xanchor=0.5, yanchor=0.5) as math_answer_1:
         xpos 285 ypos -400
         easein_bounce 0.5 ypos 250
 
@@ -462,8 +440,8 @@ label repeat_math:
         xpos 525 ypos -400
         pause 0.1
         easein_bounce 0.5 ypos 250
-
-    show math_answer_2:
+    show expression Text(str(math_answers[1]), font="GenericMobileSystem.ttf", size=40,
+        xanchor=0.5, yanchor=0.5) as math_answer_2:
         xpos 525 ypos -400
         pause 0.1
         easein_bounce 0.5 ypos 250
@@ -478,8 +456,8 @@ label repeat_math:
             xpos 765 ypos -400
             pause 0.2
             easein_bounce 0.5 ypos 250
-
-    show math_answer_3:
+    show expression Text(str(math_answers[2]), font="GenericMobileSystem.ttf", size=40,
+        xanchor=0.5, yanchor=0.5) as math_answer_3:
         xpos 765 ypos -400
         pause 0.2
         easein_bounce 0.5 ypos 250
@@ -488,8 +466,8 @@ label repeat_math:
         xpos 1005 ypos -400
         pause 0.3
         easein_bounce 0.5 ypos 250
-
-    show math_answer_4:
+    show expression Text(str(math_answers[3]), font="GenericMobileSystem.ttf", size=40,
+        xanchor=0.5, yanchor=0.5) as math_answer_4:
         xpos 1005 ypos -400
         pause 0.3
         easein_bounce 0.5 ypos 250
@@ -497,10 +475,7 @@ label repeat_math:
     with Dissolve(0.5)
 
     if current_question == total_num_math_problems:
-
-
-        $ renpy.pause(0.1, hard='True')
-
+        $ renpy.pause(0.1, hard=True)
         n "[num_1][math_symbol][num_2]=?{nw}" with Dissolve(1.0)
         jump bloody_card_convo
 
