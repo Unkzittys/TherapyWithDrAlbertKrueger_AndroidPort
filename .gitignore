@@ -6,3 +6,4 @@ game/saves/
 log.txt
 common.rpymc
 *.keystore
+android.json
