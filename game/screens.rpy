@@ -500,40 +500,39 @@ screen navigation():
 
 
 
-        if renpy.variant("pc"):
 
 
 
 
-            imagebutton:
-                if persistent.lang == "korean":
-                    idle "tl/korean/korean-quit-idle.png"
-                    hover "tl/korean/korean-quit-hover.png"
-                elif persistent.lang == "spanish":
-                    idle "tl/spanish/spanish-quit-idle.png"
-                    hover "tl/spanish/spanish-quit-hover.png"
-                elif persistent.lang == "chinese":
-                    idle "tl/chinese/chinese-quit-idle.png"
-                    hover "tl/chinese/chinese-quit-hover.png"
-                elif persistent.lang == "russian":
-                    idle "tl/russian/russian-quit-idle.png"
-                    hover "tl/russian/russian-quit-hover.png"
-                elif persistent.lang == "turkish":
-                    idle "tl/turkish/turkish-quit-idle.png"
-                    hover "tl/turkish/turkish-quit-hover.png"
-                elif persistent.lang == "french":
-                    idle "tl/french/french-quit-idle.png"
-                    hover "tl/french/french-quit-hover.png"
-                elif persistent.lang == "portuguese":
-                    idle "tl/portuguese/portuguese-quit-idle.png"
-                    hover "tl/portuguese/portuguese-quit-hover.png"
-                elif persistent.lang == "italian":
-                    idle "tl/italian/italian-quit-idle.png"
-                    hover "tl/italian/italian-quit-hover.png"
-                else:
-                    idle "gui/quit_button_idle.png"
-                    hover "gui/quit_button_hover.png"
-                action Quit(confirm=not main_menu)
+        imagebutton:
+            if persistent.lang == "korean":
+                idle "tl/korean/korean-quit-idle.png"
+                hover "tl/korean/korean-quit-hover.png"
+            elif persistent.lang == "spanish":
+                idle "tl/spanish/spanish-quit-idle.png"
+                hover "tl/spanish/spanish-quit-hover.png"
+            elif persistent.lang == "chinese":
+                idle "tl/chinese/chinese-quit-idle.png"
+                hover "tl/chinese/chinese-quit-hover.png"
+            elif persistent.lang == "russian":
+                idle "tl/russian/russian-quit-idle.png"
+                hover "tl/russian/russian-quit-hover.png"
+            elif persistent.lang == "turkish":
+                idle "tl/turkish/turkish-quit-idle.png"
+                hover "tl/turkish/turkish-quit-hover.png"
+            elif persistent.lang == "french":
+                idle "tl/french/french-quit-idle.png"
+                hover "tl/french/french-quit-hover.png"
+            elif persistent.lang == "portuguese":
+                idle "tl/portuguese/portuguese-quit-idle.png"
+                hover "tl/portuguese/portuguese-quit-hover.png"
+            elif persistent.lang == "italian":
+                idle "tl/italian/italian-quit-idle.png"
+                hover "tl/italian/italian-quit-hover.png"
+            else:
+                idle "gui/quit_button_idle.png"
+                hover "gui/quit_button_hover.png"
+            action Quit(confirm=not main_menu)
 
 
 style navigation_button is gui_button
@@ -1841,108 +1840,108 @@ style nvl_button_text:
 
 
 
-style pref_vbox:
-    variant "medium"
-    xsize 450
+# style pref_vbox:
+#     variant "medium"
+#     xsize 450
 
 
 
-screen quick_menu():
-    variant "touch"
+# screen quick_menu():
+#     variant "touch"
 
-    zorder 100
+#     zorder 100
 
-    if quick_menu:
+#     if quick_menu:
 
-        hbox:
-            style_prefix "quick"
+#         hbox:
+#             style_prefix "quick"
 
-            xalign 0.5
-            yalign 1.0
+#             xalign 0.5
+#             yalign 1.0
 
-            textbutton _("Back") action Rollback()
-            textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
-            textbutton _("Auto") action Preference("auto-forward", "toggle")
-            textbutton _("Menu") action ShowMenu()
+#             textbutton _("Back") action Rollback()
+#             textbutton _("Skip") action Skip() alternate Skip(fast=True, confirm=True)
+#             textbutton _("Auto") action Preference("auto-forward", "toggle")
+#             textbutton _("Menu") action ShowMenu()
 
 
-style window:
-    variant "small"
-    background "gui/phone/textbox.png"
+# style window:
+#     variant "small"
+#     background "gui/phone/textbox.png"
 
-style radio_button:
-    variant "small"
-    foreground "gui/phone/button/radio_[prefix_]foreground.png"
+# style radio_button:
+#     variant "small"
+#     foreground "gui/phone/button/radio_[prefix_]foreground.png"
 
-style check_button:
-    variant "small"
-    foreground "gui/phone/button/check_[prefix_]foreground.png"
+# style check_button:
+#     variant "small"
+#     foreground "gui/phone/button/check_[prefix_]foreground.png"
 
-style nvl_window:
-    variant "small"
-    background "gui/phone/nvl.png"
+# style nvl_window:
+#     variant "small"
+#     background "gui/phone/nvl.png"
 
-style main_menu_frame:
-    variant "small"
-    background "gui/phone/overlay/main_menu.png"
+# style main_menu_frame:
+#     variant "small"
+#     background "gui/phone/overlay/main_menu.png"
 
-style game_menu_outer_frame:
-    variant "small"
-    background "gui/phone/overlay/game_menu.png"
+# style game_menu_outer_frame:
+#     variant "small"
+#     background "gui/phone/overlay/game_menu.png"
 
-style game_menu_navigation_frame:
-    variant "small"
-    xsize 340
+# style game_menu_navigation_frame:
+#     variant "small"
+#     xsize 340
 
-style game_menu_content_frame:
-    variant "small"
-    top_margin 0
+# style game_menu_content_frame:
+#     variant "small"
+#     top_margin 0
 
-style pref_vbox:
-    variant "small"
-    xsize 400
+# style pref_vbox:
+#     variant "small"
+#     xsize 400
 
-style bar:
-    variant "small"
-    ysize gui.bar_size
-    left_bar Frame("gui/phone/bar/left.png", gui.bar_borders, tile=gui.bar_tile)
-    right_bar Frame("gui/phone/bar/right.png", gui.bar_borders, tile=gui.bar_tile)
+# style bar:
+#     variant "small"
+#     ysize gui.bar_size
+#     left_bar Frame("gui/phone/bar/left.png", gui.bar_borders, tile=gui.bar_tile)
+#     right_bar Frame("gui/phone/bar/right.png", gui.bar_borders, tile=gui.bar_tile)
 
-style vbar:
-    variant "small"
-    xsize gui.bar_size
-    top_bar Frame("gui/phone/bar/top.png", gui.vbar_borders, tile=gui.bar_tile)
-    bottom_bar Frame("gui/phone/bar/bottom.png", gui.vbar_borders, tile=gui.bar_tile)
+# style vbar:
+#     variant "small"
+#     xsize gui.bar_size
+#     top_bar Frame("gui/phone/bar/top.png", gui.vbar_borders, tile=gui.bar_tile)
+#     bottom_bar Frame("gui/phone/bar/bottom.png", gui.vbar_borders, tile=gui.bar_tile)
 
-style scrollbar:
-    variant "small"
-    ysize gui.scrollbar_size
-    base_bar Frame("gui/phone/scrollbar/horizontal_[prefix_]bar.png", gui.scrollbar_borders, tile=gui.scrollbar_tile)
-    thumb Frame("gui/phone/scrollbar/horizontal_[prefix_]thumb.png", gui.scrollbar_borders, tile=gui.scrollbar_tile)
+# style scrollbar:
+#     variant "small"
+#     ysize gui.scrollbar_size
+#     base_bar Frame("gui/phone/scrollbar/horizontal_[prefix_]bar.png", gui.scrollbar_borders, tile=gui.scrollbar_tile)
+#     thumb Frame("gui/phone/scrollbar/horizontal_[prefix_]thumb.png", gui.scrollbar_borders, tile=gui.scrollbar_tile)
 
-style vscrollbar:
-    variant "small"
-    xsize gui.scrollbar_size
-    base_bar Frame("gui/phone/scrollbar/vertical_[prefix_]bar.png", gui.vscrollbar_borders, tile=gui.scrollbar_tile)
-    thumb Frame("gui/phone/scrollbar/vertical_[prefix_]thumb.png", gui.vscrollbar_borders, tile=gui.scrollbar_tile)
+# style vscrollbar:
+#     variant "small"
+#     xsize gui.scrollbar_size
+#     base_bar Frame("gui/phone/scrollbar/vertical_[prefix_]bar.png", gui.vscrollbar_borders, tile=gui.scrollbar_tile)
+#     thumb Frame("gui/phone/scrollbar/vertical_[prefix_]thumb.png", gui.vscrollbar_borders, tile=gui.scrollbar_tile)
 
-style slider:
-    variant "small"
-    ysize gui.slider_size
-    base_bar Frame("gui/phone/slider/horizontal_[prefix_]bar.png", gui.slider_borders, tile=gui.slider_tile)
-    thumb "gui/phone/slider/horizontal_[prefix_]thumb.png"
+# style slider:
+#     variant "small"
+#     ysize gui.slider_size
+#     base_bar Frame("gui/phone/slider/horizontal_[prefix_]bar.png", gui.slider_borders, tile=gui.slider_tile)
+#     thumb "gui/phone/slider/horizontal_[prefix_]thumb.png"
 
-style vslider:
-    variant "small"
-    xsize gui.slider_size
-    base_bar Frame("gui/phone/slider/vertical_[prefix_]bar.png", gui.vslider_borders, tile=gui.slider_tile)
-    thumb "gui/phone/slider/vertical_[prefix_]thumb.png"
+# style vslider:
+#     variant "small"
+#     xsize gui.slider_size
+#     base_bar Frame("gui/phone/slider/vertical_[prefix_]bar.png", gui.vslider_borders, tile=gui.slider_tile)
+#     thumb "gui/phone/slider/vertical_[prefix_]thumb.png"
 
-style slider_pref_vbox:
-    variant "small"
-    xsize None
+# style slider_pref_vbox:
+#     variant "small"
+#     xsize None
 
-style slider_pref_slider:
-    variant "small"
-    xsize 600
+# style slider_pref_slider:
+#     variant "small"
+#     xsize 600
 # Decompiled by unrpyc: https://github.com/CensoredUsername/unrpyc
